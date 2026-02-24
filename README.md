@@ -12,22 +12,22 @@ The Add-on was built on Google Apps Script platform.
 
 ## APIs Used
 * **Gmail API** (GmailApp) is used to fetch the opened email metadata (sender, body, attachments).
-* **Google Workspace CardService** is used to handle the visual presentation of the final score for each email, without needing to write HTTP or CSS.
+* **Google Workspace CardService** is used to handle the visual presentation of the final score for each email, without needing to write HTML or CSS.
 * **Google PropertiesService** is used to persist the user's blacklist configuration.
 * **UrlFetchApp** is used to execute requests to external threat sources.
-* **Google Safe Browsing Api** is used as an external API for URL enrichment. It recieves URLs and checks if they apear on Google's updated lists of malicious sites.
+* **Google Safe Browsing API** is used as an external API for URL enrichment. It recieves URLs and checks if they apear on Google's updated lists of malicious sites.
 
 ## Implemented Features
-* **Dynamic Enrichment via External APIs**: extracts URLs from the email amd send a request to the Safe Google API to detect known malicious links.
-* **Static Heuristic Content Analysis**: uses Regular Expressions (Regex) to scan the email body for indicators, such as requests for credit card information, unsecured HTTP links, and urgent or threatening language typical of social engineering.
+* **Dynamic Enrichment via External APIs**: extracts URLs from the email and send a request to the Google Safe Browsing API to detect known malicious links.
+* **Content Analysis**: uses Regular Expressions (Regex) to scan the email body for indicators, such as requests for credit card information, unsecured HTTP links, and urgent or suspicious language patterns.
 * **Attachment Sandboxing**: Scans the filenames of all attached files to detect suspicious double extensions (e.g., document.pdf.exe).
-* **Weighted Risk Scoring & Explainability**: aggregates all triggered signals into a final score (0-100%). The score is calculated as the sum of scores multiplied by the number of triggered signals in order to give more weight to the maliciousness as the number of signals grows. The UI outputs the verdict and the reasons for the score, providing full transparency to the user.
-* **User-Managed Blacklist**: arovides a home-page dashboard on the email card allowing users to manually block specific domains or email addresses.
+* **Weighted Risk Scoring & Explainability**: aggregates all triggered signals into a final score (0%-100%). The final score is calculated as the sum of triggered signals' weights multiplied by the amount of triggered signals in order to make the maliciousness higher as the number of signals grows. The UI outputs the verdict and the reasons for the score, providing full transparency to the user.
+* **User-Managed Blacklist**: provides a home-page dashboard on the email card allowing users to manually block specific domains or email addresses.
 * **Attachment Analysis**: analyzes attachments in order to identify potentially malicious caracteristics.
 
 ## Limitations
-* **Regex Limitation**: hardcoded textual pattern matching can be bypassed by sophisticated threat actors using text obfuscation, zero-width spaces, or embedding text inside images. In addition, on this implementation of the Malicious Email Score, it is checked whether a credit card or something related is requested in the body of the email, so only a few related words are checked while there might be more options.
-*  **Storage Scaling**: on this assignment the Malicious Email Scorer is implemented for a single user so the database is only local, but Ideally the database would be implemented generally for all Gmail users in order to share information and potentially malicious emails and domains.
+* **Regex Limitation**: hardcoded textual pattern matching can be bypassed by sophisticated threat actors using text obfuscation, zero-width spaces, or embedding text inside images. In addition, on this implementation of the Malicious Email Scorer, it is checked whether a credit card or something related is requested in the body of the email, so only a few related words are checked while there might be more options.
+*  **Storage Scaling**: on this assignment the Malicious Email Scorer is implemented for a single user so the database is only local, but ideally the database would be implemented generally for all Gmail users in order to share information and potentially malicious emails and domains.
 *  **UI Limitation**: the application is bounded by the design of CardService. For example, dynamic styling (like changing the header's background's color according to the verdict) is restricted by the platform's API constraints.
 
 ## Examples
