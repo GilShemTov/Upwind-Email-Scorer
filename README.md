@@ -1,12 +1,12 @@
 # Malicious Email Scorer
 ## Overview
-The Malicious Email Scorer is a Google Workspace Gmail Add on designed to evaluate emails for phishing and threats.
+The Malicious Email Scorer is a Google Workspace Gmail Add-on designed to evaluate emails for phishing and threats.
 It analyzes email content, attachments, URLs and sender in real time, calculating the risk and provides the user an explainable verdict.
 
 ## Architecture
-The Add on was built on Google Apps Script platform.
-* The Add on uses a contextual trigger (onEmailPage) that activates when the user opens an email.
-* The Add on extracts the email metadata (sender, body, attachments) and passes it to functions in order to check several malicious options.
+The Add-on was built on Google Apps Script platform.
+* The Add-on uses a contextual trigger (onEmailPage) that activates when the user opens an email.
+* The Add-on extracts the email metadata (sender, body, attachments) and passes it to functions in order to check several malicious indications.
 * User configuration is stored at the user level, so there is no need in external database.
 * The cards are built and presented dynamically based on the maliciousness score.
 
