@@ -164,7 +164,7 @@ function checkIfURLMalicious(body) {
   
   if (!urls || urls.length === 0) return false;
 
-  var apiKey = 'AIzaSyBikPlXknQT6C_vCBKAP0ttqjFqK_IXN5g';
+  var apiKey = '';
   var apiUrl = 'https://safebrowsing.googleapis.com/v4/threatMatches:find?key=' + apiKey;
 
   // Format the URLs for the API payload, forcing 'http://' if it's missing
