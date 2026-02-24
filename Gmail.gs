@@ -119,7 +119,7 @@ function onHomePage() {
 
 /**
  * function that adds domains to the blacklist
- * returns a response if something was blacklisted
+ * @returns a response if something was blacklisted
  */
 
 function addToBlacklist(e){
